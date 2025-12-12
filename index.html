@@ -1,223 +1,469 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>爱护环境 · 保护地球</title>
-  <meta name="description" content="简约科技风的环保宣传页面，呼吁大家一起爱护环境，保护地球。">
-  <style>
-    :root{
-      --green-1: #00C853; /* 主色：新绿色 */
-      --green-2: #00A86B;
-      --bg: linear-gradient(135deg, rgba(0,200,83,0.08), rgba(0,168,107,0.06));
-      --card-bg: rgba(255,255,255,0.04);
-      --glass: rgba(255,255,255,0.06);
-      --glass-border: rgba(255,255,255,0.08);
-      --text: #E9F8F2;
-      --muted: rgba(233,248,242,0.8);
-      --accent: rgba(0,200,83,0.15);
-      --glass-shadow: 0 8px 24px rgba(2,10,8,0.25);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", "Segoe UI", Roboto, "PingFang SC", "Noto Sans", "Microsoft YaHei", Arial;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生态守护联盟 | EcoGuard Alliance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 1. 全局变量与重置 --- */
+        :root {
+            --primary-green: #005c35;      /* 绿色和平风格深绿 */
+            --light-green: #66cc00;        /* 亮绿色用于强调 */
+            --action-orange: #ff9800;      /* 橙色用于重要行动按钮 */
+            --dark-gray: #2b2b2b;
+            --light-gray: #f4f4f4;
+            --white: #ffffff;
+            --text-main: #333;
+        }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      min-height:100%;
-      background-color:#02120f; /* 深色基底，突出绿色科技感 */
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="%2300C853" stop-opacity="0.06"/><stop offset="1" stop-color="%2300A86B" stop-opacity="0.03"/></linearGradient></defs><rect width="200" height="200" fill="%2302120f"/><g fill="none" stroke="%23ffffff" stroke-opacity="0.02" stroke-width="1"><circle cx="100" cy="100" r="90"/><circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="30"/></g></svg>');
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:48px 24px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .wrap{
-      width:100%;
-      max-width:1080px;
-      backdrop-filter: blur(10px) saturate(120%);
-      border-radius:18px;
-      padding:36px;
-      border:1px solid var(--glass-border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      box-shadow:var(--glass-shadow);
-      display:grid;
-      grid-template-columns: 1fr 420px;
-      gap:28px;
-      align-items:stretch;
-    }
+        body {
+            font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
 
-    /* 左侧内容 */
-    .hero{
-      padding:18px 24px;
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-    }
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-weight:600;
-      letter-spacing:0.4px;
-      color:var(--muted);
-    }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
 
-    .title{
-      font-size:36px;
-      line-height:1.02;
-      font-weight:700;
-      margin:0;
-      color:var(--text);
-      text-shadow: 0 6px 18px rgba(0,200,83,0.06);
-    }
-    .lead{
-      color:var(--muted);
-      max-width:60ch;
-      margin-top:6px;
-      font-size:15px;
-    }
+        /* --- 2. 导航栏 (Navigation) --- */
+        .navbar {
+            background: var(--white);
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .features{
-      display:flex;
-      gap:12px;
-      margin-top:6px;
-      flex-wrap:wrap;
-    }
-    .pill{
-      background:linear-gradient(90deg, rgba(0,200,83,0.09), rgba(0,168,107,0.04));
-      border-radius:12px;
-      padding:10px 14px;
-      font-weight:600;
-      font-size:13px;
-      color:var(--text);
-      border:1px solid rgba(0,200,83,0.08);
-      backdrop-filter: blur(6px);
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .actions{display:flex;gap:12px;margin-top:14px}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid transparent;font-weight:700;cursor:pointer;text-decoration:none;
-    }
-    .btn-primary{
-      background: linear-gradient(90deg,var(--green-1),var(--green-2));
-      color:#02120f;
-      box-shadow: 0 8px 28px rgba(0,200,83,0.18);
-      border-color: rgba(255,255,255,0.06);
-    }
-    .btn-ghost{
-      background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04);
-    }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
 
-    /* 右侧卡片 */
-    .card{
-      padding:20px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass-border);
-      display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;
-    }
-    .planet{
-      width:160px;height:160px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05), transparent 30%), linear-gradient(180deg,var(--green-1),var(--green-2));box-shadow:0 12px 32px rgba(0,168,107,0.18);
-      border:1px solid rgba(255,255,255,0.06);
-    }
-    .planet svg{width:88px;height:88px;filter:drop-shadow(0 8px 18px rgba(0,0,0,0.35));}
+        .nav-links a {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+        }
 
-    .stats{display:flex;gap:12px;width:100%;justify-content:space-between}
-    .stat{flex:1;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.03);text-align:center}
-    .stat strong{display:block;font-size:18px}
-    .stat span{font-size:12px;color:var(--muted)}
+        .nav-links a:hover { color: var(--primary-green); }
 
-    footer{grid-column:1/-1;padding-top:10px;text-align:center;color:var(--muted);font-size:13px}
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    /* 响应式 */
-    @media (max-width:980px){
-      .wrap{grid-template-columns:1fr; padding:24px}
-      .planet{width:120px;height:120px}
-      .title{font-size:28px}
-    }
+        .lang-switch {
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-  </style>
+        /* 志愿者按钮样式 (替代原捐款按钮) */
+        .btn-volunteer {
+            background-color: var(--action-orange);
+            color: var(--white);
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .btn-volunteer:hover {
+            background-color: #e68900;
+            transform: translateY(-2px);
+        }
+
+        /* 移动端菜单按钮 (默认隐藏) */
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- 3. 首屏 Hero Section --- */
+        .hero {
+            /* 使用 Unsplash 的自然图片 */
+            background: linear-gradient(rgba(0, 30, 15, 0.6), rgba(0, 30, 15, 0.4)), 
+                        url('https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content { max-width: 900px; }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .btn-hero {
+            display: inline-block;
+            background-color: var(--light-green);
+            color: var(--white);
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            border-radius: 4px;
+            margin: 10px;
+        }
+        
+        .btn-hero:hover { background-color: #55aa00; }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+        }
+        
+        .btn-outline:hover { background-color: var(--white); color: var(--primary-green); }
+
+        /* --- 4. 统计条 (Stats Bar) --- */
+        .stats-bar {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 { font-size: 2.5rem; margin-bottom: 5px; }
+        .stat-item p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- 5. 核心议题 (Key Issues) --- */
+        .section-padding { padding: 80px 5%; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .section-header p { color: #666; font-size: 1.1rem; }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+        .card-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-content { padding: 25px; }
+
+        .card-tag {
+            font-size: 0.8rem;
+            color: var(--primary-green);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+        
+        .card-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary-green);
+            font-weight: bold;
+            border-bottom: 2px solid transparent;
+        }
+
+        .card-link:hover { border-bottom-color: var(--primary-green); }
+
+        /* --- 6. 订阅/行动呼吁 (Newsletter) --- */
+        .newsletter {
+            background-color: #e8f5e9;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .newsletter-box {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 { color: var(--primary-green); margin-bottom: 20px; }
+        
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .form-input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover { background-color: #004d2c; }
+
+        /* --- 7. 页脚 (Footer) --- */
+        footer {
+            background-color: var(--dark-gray);
+            color: #aaa;
+            padding: 60px 5% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a:hover { color: var(--white); }
+
+        .social-icons a {
+            font-size: 1.2rem;
+            margin-right: 15px;
+            color: var(--white);
+        }
+
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- 响应式适配 (Responsive) --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* 简化版：隐藏菜单 */
+            .menu-toggle { display: block; color: var(--primary-green); }
+            
+            .hero h1 { font-size: 2.5rem; }
+            .btn-hero { width: 100%; margin: 10px 0; }
+            
+            .stats-bar { flex-direction: column; gap: 30px; }
+            
+            .form-group { flex-direction: column; }
+            .btn-submit { width: 100%; }
+        }
+    </style>
 </head>
 <body>
-  <main class="wrap" role="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="kicker">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        环保倡议
-      </div>
 
-      <h1 id="hero-title" class="title">一起守护地球 · 绿色从现在开始</h1>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-leaf"></i> 
+            <div>
+                生态守护联盟<br>
+                <span style="font-size: 0.7em; font-weight: normal; color: #666;">EcoGuard Alliance</span>
+            </div>
+        </div>
 
-      <p class="lead">地球是我们共同的家园。节约资源、减少浪费、保护生物多样性，是每个人都能做到的事情。科技让我们更聪明，也要让我们更负责。</p>
+        <ul class="nav-links">
+            <li><a href="#">首页 Home</a></li>
+            <li><a href="#issues">核心议题 Issues</a></li>
+            <li><a href="#news">新闻 News</a></li>
+            <li><a href="#about">关于 About</a></li>
+        </ul>
 
-      <div class="features">
-        <div class="pill">节能减排</div>
-        <div class="pill">循环利用</div>
-        <div class="pill">绿色出行</div>
-        <div class="pill">低碳生活</div>
-      </div>
+        <div class="nav-actions">
+            <span class="lang-switch">CN / EN</span>
+            <a href="#" class="btn-volunteer">成为志愿者 Volunteer</a>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
 
-      <div class="actions">
-        <a class="btn btn-primary" href="#" onclick="cta();return false;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2v20M2 12h20" stroke="rgba(2,10,8,0.9)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          我愿意参与
-        </a>
-        <a class="btn btn-ghost" href="#tips">行动小贴士</a>
-      </div>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>地球不能再等待<br>The Earth Can't Wait</h1>
+            <p>气候危机正在发生。加入我们，在一切变得太迟之前行动起来。<br>The climate crisis is happening. Join us to act before it is too late.</p>
+            <div>
+                <a href="#" class="btn-hero">签署请愿 Sign Petition</a>
+                <a href="#" class="btn-hero btn-outline">了解更多 Learn More</a>
+            </div>
+        </div>
+    </header>
 
-      <div style="margin-top:12px;color:var(--muted);font-size:13px;">小贴士：每天少开1次车；合理分类垃圾；优先选择可循环产品。</div>
+    <section class="stats-bar">
+        <div class="stat-item">
+            <h3>30+</h3>
+            <p>分支机构 Offices</p>
+        </div>
+        <div class="stat-item">
+            <h3>300万+</h3>
+            <p>行动者 Activists</p>
+        </div>
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>公益非营利 Non-profit</p>
+        </div>
     </section>
 
-    <aside class="card" aria-labelledby="card-title">
-      <div class="planet" role="img" aria-label="地球图标">
-        <!-- 简洁科技感地球图标 -->
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-          <g fill="none" stroke="#02120f" stroke-width="1.2">
-            <path d="M32 4a28 28 0 1 0 0 56 28 28 0 0 0 0-56z" fill="rgba(2,18,15,0.18)" />
-            <path d="M12 34c6-6 10 0 18-4s12-6 22 2" stroke-opacity="0.9"/>
-            <path d="M20 18c6 2 8 0 14 0s8 6 18 6" stroke-opacity="0.9"/>
-          </g>
-        </svg>
-      </div>
-
-      <h3 id="card-title" style="margin:0;font-size:18px;">我们能做的三件小事</h3>
-      <p style="margin:6px 0 0 0;color:var(--muted);font-size:13px;text-align:center">从身边做起，小改变带来大不同。</p>
-
-      <div class="stats">
-        <div class="stat">
-          <strong>少用一次性</strong>
-          <span>减少塑料垃圾，延长产品使用寿命。</span>
+    <section id="issues" class="section-padding">
+        <div class="section-header">
+            <h2>我们关注的领域</h2>
+            <p>Key Areas We Defend</p>
         </div>
-        <div class="stat">
-          <strong>绿色出行</strong>
-          <span>步行、骑行或搭乘公共交通。</span>
-        </div>
-        <div class="stat">
-          <strong>节约用电</strong>
-          <span>随手关灯，选择能效高的家电。</span>
-        </div>
-      </div>
 
-      <a href="#" class="btn btn-ghost" style="margin-top:12px" onclick="document.getElementById('tips').scrollIntoView({behavior:'smooth'})">查看更多行动</a>
-    </aside>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1569002378732-330b2ae937ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Climate" class="card-img">
+                <div class="card-content">
+                    <span class="card-tag">气候与能源 Climate</span>
+                    <h3>加速能源转型</h3>
+                    <p>推动淘汰化石燃料，拥抱100%可再生能源的未来。我们必须在2030年前大幅减少碳排放。</p>
+                    <a href="#" class="card-link">阅读更多 Read More &rarr;</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Forest" class="card-img">
+                <div class="card-content">
+                    <span class="card-tag">森林与生态 Forest</span>
+                    <h3>守护原始森林</h3>
+                    <p>保护地球的绿肺，对抗非法采伐，维护生物多样性，确保野生动物的栖息地。</p>
+                    <a href="#" class="card-link">阅读更多 Read More &rarr;</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1583212235753-8b5029f6513c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ocean" class="card-img">
+                <div class="card-content">
+                    <span class="card-tag">海洋保护 Oceans</span>
+                    <h3>对抗塑料污染</h3>
+                    <p>我们的海洋正在“窒息”。呼吁建立全球海洋保护区，停止一次性塑料的使用。</p>
+                    <a href="#" class="card-link">阅读更多 Read More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="newsletter-box">
+            <i class="fa-regular fa-envelope fa-3x" style="color:var(--primary-green); margin-bottom:20px;"></i>
+            <h2>订阅行动快报<br>Subscribe to Action Alerts</h2>
+            <p>第一时间获取紧急环境事件警报和志愿者机会。不要袖手旁观。<br>Get urgent environmental alerts and volunteer opportunities.</p>
+            
+            <form class="form-group" onsubmit="event.preventDefault(); alert('感谢您的订阅！Thank you for subscribing!');">
+                <input type="email" class="form-input" placeholder="输入您的邮箱地址 / Enter your email" required>
+                <button type="submit" class="btn-submit">立即订阅 SUBSCRIBE</button>
+            </form>
+        </div>
+    </section>
 
     <footer>
-      <div id="tips" style="padding:18px 0 0 0">
-        <strong>行动小贴士</strong> · 使用可重复使用的购物袋、减少食物浪费、支持本地与可持续品牌。小步快走，长期坚持。
-      </div>
-      <div style="margin-top:8px">© <span id="yr"></span> 爱护环境 · 保护地球</div>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>关于我们 About</h4>
+                <ul>
+                    <li><a href="#">我们的使命 Mission</a></li>
+                    <li><a href="#">历史 History</a></li>
+                    <li><a href="#">工作机会 Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>探索更多 Explore</h4>
+                <ul>
+                    <li><a href="#">研究报告 Reports</a></li>
+                    <li><a href="#">媒体中心 Media</a></li>
+                    <li><a href="#">常见问题 FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系方式 Contact</h4>
+                <ul>
+                    <li>contact@ecoguard.org</li>
+                    <li>+86 10 1234 5678</li>
+                </ul>
+                <div class="social-icons" style="margin-top: 15px;">
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 生态守护联盟 EcoGuard Alliance. 保留所有权利. | 隐私政策 Privacy Policy</p>
+        </div>
     </footer>
 
-  </main>
-
-  <script>
-    // 动态年份
-    document.getElementById('yr').textContent = new Date().getFullYear();
-    function cta(){
-      alert('感谢你的承诺！请从今天开始做一件绿色小事 🌿');
-    }
-  </script>
 </body>
 </html>
